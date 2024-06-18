@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Sedang Dipindahkan</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: moveUp 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes moveUp {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .countdown {
+            font-size: 24px;
+            color: #333;
+            margin-top: 20px;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .footer {
+            margin-top: 40px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mohon Maaf, Website telah dipindahkan </h1>
+        <p>Anda akan dialihkan ke website baru dalam:</p>
+        <h2 class="countdown" id="countdown">5</h2>
+        <p><button class="button" onclick="skipCountdown()">Lanjut ke Gravia</button></p>
+        <p>Jika Anda butuh bantuan, hubungi kami melalui <a href="mailto:nelsenniiko@gmail.com">email</a>.</p>
+    </div>
+
+    <div class="footer">
+        <p>&copy; <span id="currentYear"></span> Nelsen Niko</p>
+    </div>
+
+    <script>
+        var countdownElement = document.getElementById('countdown');
+        var seconds = 5;
+        var countdownInterval;
+
+        function countdown() {
+            countdownInterval = setInterval(function () {
+                seconds--;
+                countdownElement.textContent = seconds;
+
+                if (seconds <= 0) {
+                    clearInterval(countdownInterval);
+                    redirectToGravia();
+                }
+            }, 1000);
+        }
+
+        function skipCountdown() {
+            clearInterval(countdownInterval);
+            redirectToGravia();
+        }
+
+        function redirectToGravia() {
+            window.location.href = 'https://nelsenpro.github.io/gravia/';
+        }
+
+        window.onload = function () {
+            countdown();
+            var currentYear = new Date().getFullYear();
+            document.getElementById('currentYear').textContent = currentYear;
+        };
+    </script>
+</body>
+
+</html
